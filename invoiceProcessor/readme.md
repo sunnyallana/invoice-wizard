@@ -3,6 +3,7 @@
 **Author: Sunny Allana**  
 **GitHub: [Sunny Allana](https://github.com/sunnyallana/)**  
 **LinkedIn: [Sunny Allana](https://www.linkedin.com/in/sunnyallana/)**
+**Instagram: [Sunny Allana](https://www.instagram.com/imsunnyallana/)**
 
 The Invoice Wizard is a desktop application implemented in Python and PyQt5 that allows users to import invoice images, utilize Optical Character Recognition (OCR) to extract relevant information, and export the extracted data into a CSV file.
 
