@@ -1,7 +1,9 @@
 import sys, re, csv, os
 from PIL import Image
 import pytesseract
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QFileDialog, QMessageBox
+from PyQt5.QtGui import QPixmap
 
 class InvoicingSystem(QMainWindow): # Application's primary class
 
@@ -10,14 +12,10 @@ class InvoicingSystem(QMainWindow): # Application's primary class
 
         self.setWindowTitle("Invoicing System") # Setting the name of the application
         self.setGeometry(600, 300, 800, 600) # Setting the dimensions [x axis, y axis, width, length] of the application
-        # self.setStyleSheet("background-image: url(C:/Users/AST/Desktop/finalProject/libraryManagementSystem/background.jpg); background-repeat: no-repeat; background-position: center;")
 
         self.headingLabel = QLabel("Invoicing System", self)
         self.headingLabel.setGeometry(20, 20, 760, 50)
         self.headingLabel.setStyleSheet("font-size: 24px; font-weight: bold; color: #000000;")
-
-        # self.invoice_label = QLabel(self)
-        # self.invoice_label.setGeometry(20, 90, 400, 400)
 
         self.importButton = QPushButton("Import Invoice", self) # Create an Import Button
         self.importButton.setGeometry(300, 520, 200, 40) # Set its dimensions
@@ -28,6 +26,13 @@ class InvoicingSystem(QMainWindow): # Application's primary class
         self.exportButton.setGeometry(520, 520, 200, 40) # Set its dimensions
         self.exportButton.setStyleSheet("background-color: #008CBA; color: #FFFFFF; font-weight: bold; border: none; padding: 10px;") # Set its CSS Properties
         self.exportButton.clicked.connect(self.exportInvoice) # Connect Button to importInvoice function
+
+        self.imageLabel = QLabel(self) # Create a QLabel to display the imported image
+        self.imageLabel.setGeometry(50, 100, 300, 300) # Set its dimensions
+
+        self.ocrTextDisplay = QLabel(self) # Create a QLabel to display the extracted OCR text
+        self.ocrTextDisplay.setGeometry(400, 140, 300, 260) # Set its dimensions
+        self.ocrTextDisplay.setWordWrap(True)
 
         self.show() # Display the application
 
@@ -48,11 +53,25 @@ class InvoicingSystem(QMainWindow): # Application's primary class
             self.importButton.setText("Invoice Imported") # Display a message when invoice is imported
             self.importButton.setEnabled(False) # Disable the import button until the current imported file is exported
 
+             # Display the imported image
+            pixmap = QPixmap(filePath)
+            self.imageLabel.setPixmap(pixmap.scaled(300, 300, aspectRatioMode=QtCore.Qt.KeepAspectRatio))
+
+            # Set the OCR text
+            self.ocrTextDisplay.setText(ocrText)
+
+            # Show the OCR text label
+            self.ocrTextLabel = QLabel("OCR Text:", self)
+            self.ocrTextLabel.setGeometry(400, 140, 100, 30)
+            self.ocrTextLabel.setStyleSheet("font-weight: bold;")
+            self.ocrTextLabel.show()
+
             self.invoiceData = { # Store the extracted data in a dictionary
                 'invoiceNumber': invoiceNumber,
                 'invoiceDate': invoiceDate,
                 'totalAmount': totalAmount
             }
+
 
     def exportInvoice(self):
         if not hasattr(self, 'invoiceData'): # Check if self has the attribute invoiceData
@@ -129,7 +148,7 @@ class InvoicingSystem(QMainWindow): # Application's primary class
         if match := re.search(amountRegex, ocrText): # Check for both regex pattern match and condition using Walrus operator
             totalAmount = match.group(1)
         return totalAmount # Return the amount
-
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     general_invoicing_system = InvoicingSystem() # Create an object of the InvoicingSystem class
