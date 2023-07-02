@@ -146,7 +146,10 @@ class InvoicingSystem(QMainWindow): # Application's primary class
             totalAmount = match.group(1)
         return totalAmount # Return the amount
     
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
-    general_invoicing_system = InvoicingSystem() # Create an object of the InvoicingSystem class
+    _ = InvoicingSystem() # Create an object of the InvoicingSystem class
     sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    main()
