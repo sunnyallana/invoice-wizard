@@ -47,9 +47,6 @@ class InvoicingSystem(QMainWindow): # Application's primary class
             invoiceDate = self.extractInvoiceDate(ocrText) # Extract invoice date from the OCR text
             totalAmount = self.extractTotalAmount(ocrText) # Extract total Amount from the OCR text
 
-            # Display the extracted invoice information or further process it as needed
-            print(f"IN: {invoiceNumber} \nID: {invoiceDate}  \nTA: {totalAmount}")
-
             self.importButton.setText("Invoice Imported") # Display a message when invoice is imported
             self.importButton.setEnabled(False) # Disable the import button until the current imported file is exported
 
