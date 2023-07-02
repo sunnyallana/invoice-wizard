@@ -1,0 +1,4 @@
+pillow
+pytesseract
+pyQt5
+pytest
