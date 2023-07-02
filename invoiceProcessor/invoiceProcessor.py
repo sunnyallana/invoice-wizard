@@ -10,10 +10,10 @@ class InvoicingSystem(QMainWindow): # Application's primary class
     def __init__(self): # Defining the class's constructor
         super().__init__() # Calling inherited QMainWindow's constructor
 
-        self.setWindowTitle("Invoicing System") # Setting the name of the application
+        self.setWindowTitle("Invoice Wizard") # Setting the name of the application
         self.setGeometry(600, 300, 800, 600) # Setting the dimensions [x axis, y axis, width, length] of the application
 
-        self.headingLabel = QLabel("Invoicing System", self)
+        self.headingLabel = QLabel("Invoice Wizard", self)
         self.headingLabel.setGeometry(20, 20, 760, 50)
         self.headingLabel.setStyleSheet("font-size: 24px; font-weight: bold; color: #000000;")
 
