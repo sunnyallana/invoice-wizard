@@ -31,7 +31,7 @@ class InvoicingSystem(QMainWindow): # Application's primary class
         self.imageLabel.setGeometry(50, 100, 300, 300) # Set its dimensions
 
         self.ocrTextDisplay = QLabel(self) # Create a QLabel to display the extracted OCR text
-        self.ocrTextDisplay.setGeometry(400, 140, 300, 260) # Set its dimensions
+        self.ocrTextDisplay.setGeometry(400, 130, 300, 350) # Set its dimensions
         self.ocrTextDisplay.setWordWrap(True)
 
         self.show() # Display the application
@@ -59,7 +59,7 @@ class InvoicingSystem(QMainWindow): # Application's primary class
 
             # Show the OCR text label
             self.ocrTextLabel = QLabel("OCR Text:", self)
-            self.ocrTextLabel.setGeometry(400, 140, 100, 30)
+            self.ocrTextLabel.setGeometry(400, 90, 100, 30)
             self.ocrTextLabel.setStyleSheet("font-weight: bold;")
             self.ocrTextLabel.show()
 

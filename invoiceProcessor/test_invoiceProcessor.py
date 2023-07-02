@@ -10,7 +10,8 @@ def test_extractInvoiceDate():
     invoicingSystem = InvoicingSystem()
     ocrText = "Invoice Date: 2023/02/30"
     invoiceDate = invoicingSystem.extractInvoiceDate(ocrText)
-    assert invoiceDate == "2023/06/30"
+    assert invoiceDate == "2023/02/30"
+
     ocrText = "Invoice Date: 12/01/2023"
     invoiceDate = invoicingSystem.extractInvoiceDate(ocrText)
     assert invoiceDate == "12/01/2023"
