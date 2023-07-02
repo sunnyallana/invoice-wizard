@@ -148,7 +148,7 @@ class InvoicingSystem(QMainWindow): # Application's primary class
     
 def main():
     app = QApplication(sys.argv)
-    _ = InvoicingSystem() # Create an object of the InvoicingSystem class
+    _ = InvoicingSystem() # Create an oAbject of the InvoicingSystem class
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
