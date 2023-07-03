@@ -1,4 +1,4 @@
-from invoiceProcessor import InvoicingSystem
+from project import InvoicingSystem
 
 def test_extractInvoiceNumber():
     invoicingSystem = InvoicingSystem()
